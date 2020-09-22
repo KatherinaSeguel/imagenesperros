@@ -1,9 +1,9 @@
-package com.example.imagenesperros
+package com.example.imagenesperros.model
 
 
 import com.google.gson.annotations.SerializedName
 
-data class DataList(
+data class DataPerros(
     @SerializedName("message")
     val message: List<String>,
     @SerializedName("status")
