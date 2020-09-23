@@ -1,6 +1,7 @@
 package com.example.imagenesperros
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -38,6 +39,8 @@ class FirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 //3) observo la función que retornará LiveData desde el ViewModel
         mViewModel.exposeLiveDataFromServer().observe(viewLifecycleOwner, Observer {
+
+            Log.d("View",it.toString())
         })
 
 
