@@ -7,9 +7,9 @@ import retrofit2.http.Path
 interface ApiInterface {
 
     @GET("breeds/list")
-    fun getDataFromApi() : retrofit2.Call<List<DataPerros>>
+    fun getDataFromApi() : retrofit2.Call<DataPerros>
 
     @GET ("breed/{razas}/images")
-    fun getDataFromApiCorutines(@Path("razas") mRazas:String): retrofit2.Response<List<DataPerros>>
+    fun getDataFromApiCorutines(@Path("razas") mRazas:String): retrofit2.Response<DataPerros>
 
 }
