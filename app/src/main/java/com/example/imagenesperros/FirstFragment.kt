@@ -6,11 +6,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Adapter
 import android.widget.Button
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.imagenesperros.model.DataPerros
+import kotlinx.android.synthetic.main.fragment_first.*
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -37,6 +40,12 @@ class FirstFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val mRecyclerView = idrecyclerView
+        val mdapter= DogAdapter(this)
+        mRecyclerView.adapter=mdapter
+        mRecyclerView.layoutManager=LinearLayoutManager(context)
+
 //3) observo la función que retornará LiveData desde el ViewModel
         mViewModel.exposeLiveDataFromServer().observe(viewLifecycleOwner, Observer {
 
