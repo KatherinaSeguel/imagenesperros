@@ -1,12 +1,10 @@
 package com.example.imagenesperros
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Adapter
 import android.widget.Button
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -18,7 +16,7 @@ import kotlinx.android.synthetic.main.fragment_first.*
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
-class FirstFragment : Fragment() {
+class FirstFragment : Fragment(),DogAdapter.PasstheData {
 //1) Declaro variable del View Model
     lateinit var mViewModel: DogViewModel
 
@@ -49,12 +47,17 @@ class FirstFragment : Fragment() {
 //3) observo la función que retornará LiveData desde el ViewModel
         mViewModel.exposeLiveDataFromServer().observe(viewLifecycleOwner, Observer {
 
-            Log.d("View",it.toString())
+           // Log.d("View",it.toString())
+            mdapter.updateDog(listOf(it))
         })
 
 
         view.findViewById<Button>(R.id.button_first).setOnClickListener {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }
+    }
+
+    override fun passTheData(mDog: DataPerros) {
+        TODO("Not yet implemented")
     }
 }
