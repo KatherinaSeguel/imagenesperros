@@ -13,7 +13,7 @@ interface DogDao {
     suspend fun insertAllDog(mDogList: List<DogPerrosRoom>)
 
     @Query("SELECT * FROM dog_table")
-    fun getAllDogFromDB():LiveData<DataPerros>
+    fun getAllDogFromDB():LiveData<DogPerrosRoom>
 
 
 }
