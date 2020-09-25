@@ -4,14 +4,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.imagenesperros.Room.DogPerrosRoom
 import com.example.imagenesperros.model.DataPerros
 import kotlinx.android.synthetic.main.item_list_view.view.*
 
 class DogAdapter (var mPasstheData:PasstheData) : RecyclerView.Adapter<DogAdapter.DogViewHolder>(){  //paso 4 ,Implementar Recycler View
 
-   private var mData = emptyList<DataPerros>()  //paso 1
+   private var mData = emptyList<DogPerrosRoom>()  //paso 1
 
-    fun updateDog(mStringList: List<DataPerros>) {
+    fun updateDog(mStringList: List<DogPerrosRoom>) {
 
         mData = mStringList        //paso 2
         notifyDataSetChanged()
@@ -44,7 +45,7 @@ class DogAdapter (var mPasstheData:PasstheData) : RecyclerView.Adapter<DogAdapte
         //llena el xml con los objetos del listado, une los datos con los elementos
 
         val mDog= mData[position]
-        holder.mitemView.text=mDog.message.toString()
+        holder.mitemView.text=mDog.dog
 
     }
 
@@ -55,7 +56,7 @@ class DogAdapter (var mPasstheData:PasstheData) : RecyclerView.Adapter<DogAdapte
     //esta interface está pasando el dato al primer fragmento
     interface PasstheData{
 
-        fun passTheData(mDog:DataPerros)
+        fun passTheData(mDog:DogPerrosRoom)
     }
 
 }

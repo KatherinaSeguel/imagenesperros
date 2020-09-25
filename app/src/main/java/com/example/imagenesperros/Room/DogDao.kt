@@ -10,10 +10,10 @@ import com.example.imagenesperros.model.DataPerros
 @Dao
 interface DogDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAllDog(mDogList: List<DogPerrosRoom>)
+    suspend fun insertAllDog(mDogList:List<DogPerrosRoom>)
 
     @Query("SELECT * FROM dog_table")
-    fun getAllDogFromDB():LiveData<DogPerrosRoom>
+    fun getAllDogFromDB():LiveData<List<DogPerrosRoom>>
 
 
 }

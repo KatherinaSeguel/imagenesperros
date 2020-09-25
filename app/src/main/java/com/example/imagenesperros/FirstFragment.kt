@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.imagenesperros.Room.DogPerrosRoom
 import com.example.imagenesperros.model.DataPerros
 import kotlinx.android.synthetic.main.fragment_first.*
 
@@ -48,7 +49,7 @@ class FirstFragment : Fragment(),DogAdapter.PasstheData {
         mViewModel.exposeLiveDataFromServer().observe(viewLifecycleOwner, Observer {
 
            // Log.d("View",it.toString())
-            mdapter.updateDog(listOf(it))
+            mdapter.updateDog(it)
         })
 
 
@@ -57,7 +58,7 @@ class FirstFragment : Fragment(),DogAdapter.PasstheData {
         }
     }
 
-    override fun passTheData(mDog: DataPerros) {
+    override fun passTheData(mDog: DogPerrosRoom) {
         TODO("Not yet implemented")
     }
 }
