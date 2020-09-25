@@ -3,6 +3,7 @@ package com.example.imagenesperros.model
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.room.CoroutinesRoom
+import com.example.imagenesperros.Room.DogDao
 import com.example.imagenesperros.Room.DogPerrosRoom
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -11,10 +12,12 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class Repository {
+class Repository(private val mDogDao: DogDao) {
     private val service= RetrofitClient.getRetrofitClient()
-    val mLiveData : MutableLiveData<DataPerros> = MutableLiveData()  //lista que se puede modificar métodos:replace up
+   // ****se cambia***val mLiveData : MutableLiveData<DataPerros> = MutableLiveData()  //lista que se puede modificar métodos:replace up
     // es val porque la posisión de memoria no se modifica , pero SI el contenido
+
+    val mLiveData=mDogDao.getAllDogFromDB()
 
     //La vieja confiable
     fun getDataFromServer(){
@@ -26,7 +29,12 @@ class Repository {
                 response: Response<DataPerros>
             ) {
                 when(response.code()){
-                    in 200..299 -> mLiveData.postValue(response.body())
+                   //***se cambia***  in 200..299 -> mLiveData.postValue(response.body())
+                    in 200..299 -> CoroutineScope(Dispatchers.IO).launch {
+                        response.body()?.let {
+                            mDogDao.insertAllDog(it)
+                        }
+                    }
                     in 300..399 -> Log.d("ERROR 300",response.errorBody().toString())
 
                 }
