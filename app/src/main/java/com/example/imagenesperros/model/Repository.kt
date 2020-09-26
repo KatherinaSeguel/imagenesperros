@@ -16,6 +16,7 @@ class Repository(private val razasDao: DogDao) {
     // es val porque la posisión de memoria no se modifica , pero SI el contenido
 
     val mLiveData=razasDao.getAllDogFromDB()
+    //val mLiveimg=razasImgDao.getAllImgFromDB()
 //luego lo de las imagenes va aquí
     //La vieja confiable
     fun getDataFromServer(){

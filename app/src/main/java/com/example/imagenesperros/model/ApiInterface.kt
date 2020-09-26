@@ -1,5 +1,9 @@
 package com.example.imagenesperros.model
 
+import androidx.lifecycle.LiveData
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
 import retrofit2.http.GET
 import retrofit2.http.Path
 
