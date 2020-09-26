@@ -14,6 +14,6 @@ interface ApiInterface {
     fun getDataFromApi() : retrofit2.Call<DataPerros>
 
     @GET ("breed/{razas}/images")
-    fun getDataFromApiCorutines(@Path("razas") mRazas:String): retrofit2.Response<DataPerros>
+    fun getDataFromApiCorutines(@Path("razas") mRazas:String): retrofit2.Response<DogImagenes>
 
 }
